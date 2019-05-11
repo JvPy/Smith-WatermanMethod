@@ -1,18 +1,18 @@
 # DNA Alignment Methods
 
-# Needleman-Wunsch Method - Global alingment
+### Needleman-Wunsch Method - Global alingment
 
 The Needleman-Wunsch algorithm performs global sequence alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences
 
-# Smith & Waterman Method - Local alingment
+### Smith & Waterman Method - Local alingment
 
 The Smith–Waterman algorithm performs local sequence alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences
 
-# Additional Info
+> Additional Info
 
 This algorithm was implemented during the Bio-informatics computation course @ UNESP-IBILCE, Sao Jose do Rio Preto, Sao Paulo, Brazil
 
-# Compiling and running - C
+### Compiling and running - C
 
 gcc method.c -o method
 
