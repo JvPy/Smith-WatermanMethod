@@ -7,6 +7,9 @@
 #define mismatch 0
 #define gap -1
 
+#define linha 262
+#define coluna 326
+
 clock_t begin;
 clock_t end;
 double timeE;
@@ -15,8 +18,8 @@ int main(void){
   int i, j, k;         //Conters
   int score, a, b, c;   //Score
 
-  char str1[261], str2[326];          //DNA strings
-  char *T_Score, *T_backtrack; //Matrix - Score and backtrack
+  char str1[linha], str2[coluna];          //DNA strings
+  char T_Score[linha][coluna], T_backtrack[linha][coluna];        //Matrix - Score and backtrack
 
   FILE *fastaFile;
 
@@ -30,7 +33,7 @@ int main(void){
   else
     printf("Fasta aberto\n");
 
-  char line [61]; /* or other suitable maximum line size */
+  char line [128]; /* or other suitable maximum line size */
   i = 0;
   while(fgets(line, sizeof line, fastaFile) != NULL){ /* read a line */
     // printf("Linha: %i ", i);
@@ -49,7 +52,7 @@ int main(void){
         strcat(str2, line);
       }
     } else {
-      printf("Sequencia %i: \n", i);
+      // printf("Sequencia %i: \n", i);
       i++;
     }
   }
@@ -58,7 +61,7 @@ int main(void){
   printf("STR1:\n%s\n\n", str1);
   printf("STR2:\n%s\n\n", str2);
 
-
+  //Metodo
 
   end = clock();
   timeE = (double)(end - begin) / CLOCKS_PER_SEC;
