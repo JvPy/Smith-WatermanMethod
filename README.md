@@ -9,7 +9,8 @@ The Needleman-Wunsch algorithm performs global sequence alignment; that is, for 
 The Smith–Waterman algorithm performs local sequence alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences
 
 > Additional Info
->This algorithm was implemented during the Bio-informatics computation course @ UNESP-IBILCE, Sao Jose do Rio Preto, Sao Paulo, Brazil
+
+> This algorithm was implemented during the Bio-informatics computation course @ UNESP-IBILCE, Sao Jose do Rio Preto, Sao Paulo, Brazil
 
 ### Compiling and running - C
 
