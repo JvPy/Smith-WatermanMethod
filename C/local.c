@@ -11,40 +11,40 @@
 #define backtrackMismatch -(mismatch)
 #define backtrackGap -(gap)
 
-// #define linha 1879
-// #define coluna 2805
+#define linha 1879
+#define coluna 2805
 // #define linha 560
 // #define coluna 562
-#define linha 188
-#define coluna 190
+// #define linha 188
+// #define coluna 190
 
 clock_t begin;
 clock_t end;
 double timeE;
 
+int i, j, k;                            //Conters
+int iStart, jStart, kStart, valueStart; //Startpoint
+int score, a, b, c;                     //Score
+unsigned int x,y;
+
+char str1[linha], str2[coluna];          //DNA strings
+int tScore[linha][coluna];                          //Matrix - Score and backtrack
+
+FILE *fastaFile;
+
 int main(void){
-  int i, j, k;                            //Conters
-  int iStart, jStart, kStart, valueStart; //Startpoint
-  int score, a, b, c;                     //Score
-  unsigned int x,y;
 
-  char str1[linha] = {0}, str2[coluna] = {0};          //DNA strings
-  char tScore[linha][coluna];                          //Matrix - Score and backtrack
-
-  FILE *fastaFile;
-
-  puts("[*] Score:\n");
   printf("[*] Match: %i  Mismatch: %i  Gap: %i.\n", match, mismatch, gap);
   printf("[*] backtrackMatch: %i  backtrackMismatch: %i  backtrackGap: %i.\n\n", backtrackMatch, backtrackMismatch, backtrackGap);
   begin = clock();
 
-  fastaFile=fopen ("files/3.fasta","r");
+  fastaFile=fopen ("files/1.fasta","r");
   if (!fastaFile)
     printf ("[-] Erro na abertura do arquivo.\n");
   else
     printf("[+] Fasta aberto!\n");
 
-  char line [128];
+  char line [300];
   i = 0;
   while(fgets(line, sizeof line, fastaFile) != NULL){
 
@@ -85,7 +85,7 @@ int main(void){
 
       if(a >= b && a >= c)
         tScore[i][j] = a;
-      else if(b > a && b >= c)
+      else if(b >= a && b >= c)
         tScore[i][j] = b;
       else
         tScore[i][j] = c;
@@ -114,18 +114,20 @@ int main(void){
     c = tScore[iStart][jStart-1] + backtrackGap;
 
     if(a <= b && a <= c){
-      printf("Diagonal\t\t|%c\t%c|\t", str1[iStart], str2[jStart]);
+      printf("Diagonal\t|%c\t%c|\t", str1[iStart], str2[jStart]);
       iStart--;
       jStart--;
-    } else if(b < a && b <= c){
-      printf("Gap Linha\t|%c\t-|\t", str1[iStart-2]);
+    } else if(b < a && b <= c) {
+      printf("Gap Linha\t|%c\t-|\t", str1[iStart-1]);
       jStart--;
     } else {
-      printf("Gap Coluna\t|-\t%c|\t", str2[jStart-2]);
+      printf("Gap Coluna\t|-\t%c|\t", str2[jStart-1]);
       iStart--;
     }
     printf("iStart: %d, jStart: %d\n", iStart, jStart);
   }
+
+  printf("\nPontuacao: %d\n", valueStart);
 
   end = clock();
   timeE = (double)(end - begin) / CLOCKS_PER_SEC;
